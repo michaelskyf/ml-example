@@ -1,4 +1,4 @@
-# CaseWeek 2022
+# CaseWeek 2023
 
 Before workshop, you should:
 1. create virtual environment (using virualevn or anaconda) with python 3.8.
