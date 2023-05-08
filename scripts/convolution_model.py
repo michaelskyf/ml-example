@@ -10,7 +10,7 @@ from logs import LOGS_PATH
 from models import MODELS_PATH
 
 model = Sequential([
-    Conv2D(100, (3, 3), activation='relu', input_shape=(150, 100, 3)),
+    Conv2D(100, (3, 3), activation='relu', input_shape=(224, 224, 3)),
     MaxPooling2D(2, 2),
 
     Conv2D(100, (3, 3), activation='relu'),
@@ -27,14 +27,14 @@ train_datagen = ImageDataGenerator(rescale=1.0 / 255)
 train_generator = train_datagen.flow_from_directory(
     TRAIN_DATASET_PATH,
     batch_size=64,
-    target_size=(150, 100),
+    target_size=(224, 224),
 )
 
 validation_datagen = ImageDataGenerator(rescale=1.0 / 255)
 validation_generator = validation_datagen.flow_from_directory(
     TEST_DATASET_PATH,
     batch_size=64,
-    target_size=(150, 100),
+    target_size=(224, 224),
 )
 
 tensorboard_callback = tf.keras.callbacks.TensorBoard(log_dir=os.path.join(LOGS_PATH, "convolution"))
