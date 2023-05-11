@@ -6,7 +6,7 @@ from keras.layers import Conv2D, MaxPooling2D, Flatten, Dense, Dropout
 from tensorflow.keras.preprocessing.image import ImageDataGenerator
 
 import sys
-sys.path.append("/home/skyflighter/Programming/ml/caseweek2023")
+sys.path.append("../")
 
 from dataset import TRAIN_DATASET_PATH, TEST_DATASET_PATH
 from logs import LOGS_PATH
