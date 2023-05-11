@@ -26,7 +26,7 @@ model.compile(optimizer='adam', loss='binary_crossentropy', metrics=['accuracy']
 train_datagen = ImageDataGenerator(rescale=1.0 / 255)
 train_generator = train_datagen.flow_from_directory(
     TRAIN_DATASET_PATH,
-    batch_size=256,
+    batch_size=128,
     target_size=(200, 200),
     color_mode="grayscale",
 )
@@ -34,7 +34,7 @@ train_generator = train_datagen.flow_from_directory(
 validation_datagen = ImageDataGenerator(rescale=1.0 / 255)
 validation_generator = validation_datagen.flow_from_directory(
     TEST_DATASET_PATH,
-    batch_size=256,
+    batch_size=128,
     target_size=(200, 200),
     color_mode="grayscale",
 )
