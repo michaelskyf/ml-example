@@ -5,12 +5,15 @@ from keras.models import Sequential
 from keras.layers import Conv2D, MaxPooling2D, Flatten, Dense, Dropout
 from tensorflow.keras.preprocessing.image import ImageDataGenerator
 
+import sys
+sys.path.append("/home/skyflighter/Programming/ml/caseweek2023")
+
 from dataset import TRAIN_DATASET_PATH, TEST_DATASET_PATH
 from logs import LOGS_PATH
 from models import MODELS_PATH
 
 model = Sequential([
-    Conv2D(100, (3, 3), activation='relu', input_shape=(224, 224, 3)),
+    Conv2D(100, (3, 3), activation='relu', input_shape=(200, 200, 1)),
     MaxPooling2D(2, 2),
 
     Conv2D(100, (3, 3), activation='relu'),
@@ -26,15 +29,17 @@ model.compile(optimizer='adam', loss='binary_crossentropy', metrics=['accuracy']
 train_datagen = ImageDataGenerator(rescale=1.0 / 255)
 train_generator = train_datagen.flow_from_directory(
     TRAIN_DATASET_PATH,
-    batch_size=64,
-    target_size=(224, 224),
+    batch_size=256,
+    target_size=(200, 200),
+    color_mode="grayscale",
 )
 
 validation_datagen = ImageDataGenerator(rescale=1.0 / 255)
 validation_generator = validation_datagen.flow_from_directory(
     TEST_DATASET_PATH,
-    batch_size=64,
-    target_size=(224, 224),
+    batch_size=256,
+    target_size=(200, 200),
+    color_mode="grayscale",
 )
 
 tensorboard_callback = tf.keras.callbacks.TensorBoard(log_dir=os.path.join(LOGS_PATH, "convolution"))
