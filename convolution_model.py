@@ -5,9 +5,6 @@ from keras.models import Sequential
 from keras.layers import Conv2D, MaxPooling2D, Flatten, Dense, Dropout
 from tensorflow.keras.preprocessing.image import ImageDataGenerator
 
-import sys
-os.path.abspath(os.path.join(os.path.dirname(__file__), "../dataset"))
-
 from dataset import TRAIN_DATASET_PATH, TEST_DATASET_PATH
 from logs import LOGS_PATH
 from models import MODELS_PATH
